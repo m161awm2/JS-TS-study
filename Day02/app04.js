@@ -9,4 +9,5 @@ document.getElementById("button").addEventListener("click",function(){
     document.getElementById("text_name").innerText = name
     document.getElementById("text_age").innerText = age
     }
-});
+}
+);
