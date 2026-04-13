@@ -6,17 +6,17 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
     const content = document.getElementById("input_content").value;
 
     if (name.trim().length < 2) {
-        alert("이름을 두 글자 이상 입력하세요");
+        alert("이름은 두 글자 이상 입력하세요.");
         return;
     }
 
     if (isNaN(age) || age.trim() === "") {
-        alert("나이는 숫자를 입력하세요!");
+        alert("나이는 숫자로 입력하세요.");
         return;
     }
 
     if (content.trim().length < 5) {
-        alert("내용은 5글자 이상 입력하세요");
+        alert("내용은 5글자 이상 입력하세요.");
         return;
     }
 
