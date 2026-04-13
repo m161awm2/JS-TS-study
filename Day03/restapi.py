@@ -89,11 +89,11 @@ def signup():
     c.execute("SELECT * FROM users WHERE username = %s",(username,))
     is_exists = c.fetchone()
     if is_exists:
-        return jsonify({"message" : "login fail (exists username)"}), 401
-    c.execute("INSERT INTO posts (username,password) VALUE (%s,%s)",(username,password))
+        return jsonify({"message" : "signup fail (exists username)"}), 401
+    c.execute("INSERT INTO users (username,password) VALUES (%s,%s)",(username,password))
     conn.commit()
     conn.close()
-    return jsonify({"message" : "Login successful"})
+    return jsonify({"message" : "signup successful"})
 if __name__ == "__main__":
     mk_db()
     init_db()
