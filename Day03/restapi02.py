@@ -7,7 +7,7 @@ def mkdb():
     conn = pymysql.connect(
         host="localhost",
         user="root",
-        passwd="Zdzdsmsm44!"
+        passwd=""
     )
     c = conn.cursor()
     c.execute("CREATE DATABASE IF NOT EXISTS restapi02")
@@ -18,7 +18,7 @@ def get_conn():
     return pymysql.connect(
         host="localhost",
         user="root",
-        passwd="Zdzdsmsm44!",
+        passwd="",
         database="restapi02",
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True
@@ -107,6 +107,8 @@ def login():
         return jsonify({"message" : "wrong! rewrite"}),401
     session["user"] = nickname
     return jsonify({"message" : "success login!"}), 200
+
+@app.route()
 
 @app.route("/comments/<int:post_id>",methods=["GET","POST"])
 def comments(post_id):

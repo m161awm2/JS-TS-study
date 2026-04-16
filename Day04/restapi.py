@@ -7,7 +7,7 @@ def mkdb():
     conn = pymysql.connect(
         host="localhost",
         user="root",
-        passwd="Zdzdsmsm44!"
+        passwd=""
     )
     c = conn.cursor()
     c.execute("CREATE DATABASE IF NOT EXISTS Day04")
@@ -18,7 +18,7 @@ def get_conn():
     return pymysql.connect(
         host="localhost",
         user="root",
-        passwd="Zdzdsmsm44!",
+        passwd="",
         database="Day04",
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True
@@ -43,23 +43,29 @@ def init_db():
     c.execute("""CREATE TABLE IF NOT EXISTS comments(
               id INT AUTO_INCREMENT PRIMARY KEY,
               nickname TEXT,
-              conetent TEXT
+              content TEXT,
+              post_id INT
               )
               """)
     conn.commit()
     conn.close()
 
-@app.route('/board')
+@app.route("/")
+def home():
+    return render_template("index.html")
+@app.route('/api/board',methods=["GET"])
 def board():
     conn = get_conn()
     c = conn.cursor()
     c.execute("SELECT * FROM posts ORDER BY id DESC")
     posts = c.fetchall()
-    conn.commit()
     conn.close()
     return jsonify(posts)
 
-@app.route('/write',methods=["POST"])
+@app.route('/write-go',methods=["GET"])
+def write_get():
+    return render_template("write.html")
+@app.route('/api/write',methods=["POST"])
 def write():
     conn = get_conn()
     c = conn.cursor()
@@ -74,7 +80,10 @@ def write():
     conn.close()
     return jsonify({"message" : "Success write!"}),201
 
-@app.route('/signup',methods=["POST"])
+@app.route('/signup-go',methods=["GET"])
+def signup_get():
+    return render_template("signup.html")
+@app.route('/api/signup',methods=["POST"])
 def signup():
     conn = get_conn()
     c = conn.cursor()
@@ -88,8 +97,12 @@ def signup():
     c.execute("INSERT INTO users (nickname,password) VALUES (%s,%s)",(nickname,password))
     conn.commit()
     conn.close()
+    return jsonify({"message": "Success signup!"}), 201
 
-@app.route('/login',methods=["POST"])
+@app.route('/login-go',methods=["GET"])
+def login_get():
+    return render_template("login.html")
+@app.route('/api/login',methods=["POST"])
 def login():
     conn = get_conn()
     c = conn.cursor()
@@ -104,6 +117,23 @@ def login():
         return jsonify({"message" : "fail login! wrong name or pw"}),400
     session["user"] = nickname
     return jsonify({"message" : "Success login!"}),200
+
+@app.route('/detail/<int:post_id>')
+def detail_get(post_id):
+    return render_template("detail.html",post_id=post_id)
+@app.route('/api/detail/<int:post_id>',methods=["GET"])
+def detail(post_id):
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute("SELECT * FROM comments WHERE post_id = %s",(post_id,))
+    comments = c.fetchall()
+    c.execute("SELECT * FROM posts WHERE id = %s",(post_id,))
+    post = c.fetchone()
+    conn.close()
+    return jsonify({
+        "post": post,
+        "comments": comments
+    })
 
 if __name__ == "__main__":
     mkdb()
