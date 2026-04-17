@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기</title>
+</head>
+<body>
+    <form id="writeForm">
+        <input id="input_name" type="text" placeholder="글쓴이">
+        <input id="input_title" type="text" placeholder="제목">
+        <input id="input_content" type="text" placeholder="내용">
+        <input id="input_password" type="password" placeholder="비밀번호">
+        <button>글 쓰기</button>
+    </form>
+    <p id="message"></p> 
+    <a href="{{ url_for('home') }}">돌아가기<a>
+</body>
+</html>

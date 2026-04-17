@@ -13,11 +13,15 @@ fetch("/api/signup",{
         password
     })
 })
+
 .then(res => res.json())
+
 .then(data => {
     alert(data.message);
 })
+
 .catch(error => {
     console.error(error);
 })
+
 });
