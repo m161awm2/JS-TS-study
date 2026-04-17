@@ -7,7 +7,7 @@ def mkdb():
     conn = pymysql.connect(
         host="localhost",
         user="root",
-        passwd="Zdzdsmsm44!",
+        passwd="",
     )
     c = conn.cursor()
     c.execute("CREATE DATABASE IF NOT EXISTS Day05")
@@ -18,7 +18,7 @@ def get_connect():
     return pymysql.connect(
         host="localhost",
         user="root",
-        passwd="Zdzdsmsm44!",
+        passwd="",
         database="Day05",
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True
