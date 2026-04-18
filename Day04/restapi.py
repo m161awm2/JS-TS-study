@@ -1,5 +1,6 @@
 from flask import Flask,request,session,render_template,jsonify
 import pymysql
+from db_password import DB_PASSWORD
 app = Flask(__name__)
 app.secret_key = "덕테이프"
 
@@ -7,7 +8,7 @@ def mkdb():
     conn = pymysql.connect(
         host="localhost",
         user="root",
-        passwd=""
+        passwd=DB_PASSWORD
     )
     c = conn.cursor()
     c.execute("CREATE DATABASE IF NOT EXISTS Day04")
@@ -18,7 +19,7 @@ def get_conn():
     return pymysql.connect(
         host="localhost",
         user="root",
-        passwd="",
+        passwd=DB_PASSWORD,
         database="Day04",
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True

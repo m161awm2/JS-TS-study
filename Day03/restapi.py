@@ -1,5 +1,6 @@
 from flask import Flask,request,jsonify,session
 import pymysql
+from db_password import DB_PASSWORD
 
 app = Flask(__name__)
 app.secret_key = "레스트api겁나어렵네"
@@ -7,7 +8,7 @@ def mk_db():
     conn = pymysql.connect(
         host="localhost",
         user="root",
-        passwd="Zdzdsmsm44!"
+        passwd=DB_PASSWORD
     )
     c = conn.cursor()
     c.execute("CREATE DATABASE IF NOT EXISTS restapi")
@@ -18,7 +19,7 @@ def get_conn():
     return pymysql.connect(
         host="localhost",
         user="root",
-        passwd="Zdzdsmsm44!",
+        passwd=DB_PASSWORD,
         database="restapi",
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True
