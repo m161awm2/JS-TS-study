@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <form id="myForm">
+        <input id="nickname" placeholder="이름을 입력하세요" required>
+        <input id="password" placeholder="비밀번호를 입력하세요" required><br>
+        <input id="title" placeholder="제목을 입력하세요" required>
+        <input id="content" placeholder="내용을 입력하세요" required>
+        <button>글쓰기</button>
+        <hr>
+    </from>
+    <p id="message"></p>
+    <div id="post_list"></div>
+    <script src="{{ url_for('static',filename='js/main.js') }}"></script>
+</body>
+</html>
