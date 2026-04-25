@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세보기</title>
+</head>
+<body>
+    <h1 id="post_title"></h1>
+    <p>글쓴이: <span id="post_nickname"></span></p>
+    <p id="post_content"></p>
+
+    <hr>
+
+    <h2>댓글 목록</h2>
+    <div id="comment_box"></div>
+
+    <br>
+    <a href="/">돌아가기</a>
+
+    <script>
+        const postId = {{ post_id | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/detail.js') }}"></script>
+</body>
+</html>

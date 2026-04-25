@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+</head>
+<body>
+    <form id="loginForm">
+        <input id="input_name" type="text" placeholder="이름을 입력하세요!" required>
+        <input id="input_password" type="password" placeholder="비밀번호를 입력하세요!" required>
+        <button>로그인</button>
+    </form>
+    <p id="message"></p>
+
+    <a href="{{ url_for('home') }}">홈으로 가기</a>
+    <script src="{{ url_for('static',filename='js/login.js') }}"></script>
+</body>
+</html>

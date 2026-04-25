@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+</head>
+<body>
+    <h1>welcome</h1>
+    <h3 id="name">회원가입을 해주세요!</h3>
+    <a href="{{ url_for('signup_get') }}">회원가입</a>
+    <a href="{{ url_for('login_get') }}">로그인</a>
+    <a href="{{ url_for('write_get') }}">글쓰기</a>
+    <h3>글 목록</h3>
+    <div id="post_list"></div>
+
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>    
+</body>
+</html>
