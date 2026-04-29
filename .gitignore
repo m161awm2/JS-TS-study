@@ -1,21 +1,3 @@
-# Python
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.mypy_cache/
-.venv/
-venv/
-env/
-
-# Node / frontend
 node_modules/
-
-# IDE / OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Local secrets
-# Keep DB credentials in each Day folder's db_password.py locally and do not push them.
-db_password.py
+dist/
+.env

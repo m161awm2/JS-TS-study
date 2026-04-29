@@ -17,6 +17,7 @@ async function init_db(){
     host: DB_HOST,
     user: DB_USER,
     password: DB_PASSWORD,
+    database: DB_NAME
   });
   await tempDb.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
   await tempDb.end();
