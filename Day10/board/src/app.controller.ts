@@ -4,7 +4,7 @@ import mysql from "mysql2/promise";
 
 const DB_HOST = "localhost";
 const DB_USER = "root";
-const DB_PASSWORD = "Zdzdsmsm44!";
+const DB_PASSWORD = "";
 const DB_NAME = "Day10";
 const db = mysql.createPool({
   host:DB_HOST,
